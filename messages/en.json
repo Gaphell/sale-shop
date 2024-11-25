@@ -1,0 +1,14 @@
+{
+  "Home": {
+    "title": "Hello, welcome to our site!",
+    "description": "Tutorial of how to manipulate i18n based on route path or domain with  Nextjs v15",
+    "meta": {
+      "title": "Welcome to Sale-Shop",
+      "description": "Discover amazing products curated just for you."
+    },
+    "appName": "E-Shop",
+    "welcomeMessage": "Welcome to Sale-Shop",
+    "heroText": "Discover amazing products curated just for you.",
+    "categories": "Categories"
+  }
+}

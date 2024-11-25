@@ -1,0 +1,10 @@
+{
+  "Home": {
+    "title": "Hallo, willkommen auf unserer Seite!",
+    "description": "Tutorial of how to manipulate i18n based on route path or domain with  Nextjs v15",
+    "meta": {
+      "title": "title",
+      "description": "description"
+    }
+  }
+}
