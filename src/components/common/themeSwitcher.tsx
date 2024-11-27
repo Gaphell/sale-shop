@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 const ThemeSwitcher = () => {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
   useEffect(() => {
     // Initialize theme from localStorage or default to 'light'
@@ -30,21 +30,21 @@ const ThemeSwitcher = () => {
       onClick={toggleTheme}
     >
       {/* Light Mode Icon */}
-      <span className="text-yellow-500">{theme === "light" ? "☀️" : "🌕"}</span>
+      {/* <span className="text-yellow-500">{theme === "light" ? "☀️" : "🌕"}</span> */}
 
       {/* Slider */}
       <div className="relative w-12 h-6 bg-gray-300 dark:bg-gray-600 rounded-full transition-colors duration-300">
         <div
           className={`absolute top-1 left-1 w-4 h-4 rounded-full transition-all duration-300 ${
             theme === "light"
-              ? "translate-x-0 bg-yellow-500"
-              : "translate-x-6 bg-blue-500"
+              ? "translate-x-0 bg-gray-900"
+              : "translate-x-6 bg-gray-50"
           }`}
         />
       </div>
 
       {/* Dark Mode Icon */}
-      <span className="text-blue-500">{theme === "dark" ? "🌙" : "⭐"}</span>
+      {/* <span className="text-blue-500">{theme === "dark" ? "🌙" : "⭐"}</span> */}
     </div>
   );
 };

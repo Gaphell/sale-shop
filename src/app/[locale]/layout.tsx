@@ -6,8 +6,8 @@ import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { setRequestLocale } from "next-intl/server";
-import Footer from "@/components/footer";
-import Header from "@/components/header";
+import Footer from "@/components/common/footer";
+import Header from "@/components/common/header";
 
 const geistSans = localFont({
   src: "../fonts/GeistVF.woff",
@@ -77,10 +77,10 @@ export default async function RootLayout({
       >
         <NextIntlClientProvider messages={messages as AbstractIntlMessages}>
           <Header locale={locale} />
-          <main className="flex-grow px-8 py-8 md:px-16 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100">
+          <main className="flex-grow px-8 py-8 md:px-16 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-200">
             {children}
           </main>
-          <Footer locale={locale} />
+          <Footer />
         </NextIntlClientProvider>
       </body>
     </html>
