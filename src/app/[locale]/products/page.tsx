@@ -7,7 +7,7 @@ interface ProductsPageProps {
 
 export default async function ProductsPage(props: ProductsPageProps) {
   const { locale } = await props.params;
-  const data = await fetchProducts();
+  const data = await fetchProducts({});
 
-  return <ProductListPage locale={locale} products={data?.products} />;
+  return <ProductListPage locale={locale} data={data} />;
 }

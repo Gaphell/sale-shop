@@ -14,7 +14,7 @@ function getRandomNumber(min: number, max: number) {
 function replaceImageUrl(categories: Array<Category>) {
   return categories.map((category) => ({
     ...category,
-    image: `https://picsum.photos/300/200?random=${getRandomNumber(1, 100)}`,
+    image: `https://picsum.photos/400/300?random=${getRandomNumber(1, 100)}`,
   }));
 }
 

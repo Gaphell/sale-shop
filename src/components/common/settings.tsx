@@ -4,17 +4,21 @@ import { useEffect, useRef, useState } from "react";
 import CurrencySwitcher from "./currencySwitcher";
 import LanguageSwitcher from "./languageSwitcher";
 import ThemeSwitcher from "./themeSwitcher";
+import { ExchangeRates } from "@/actions/exchange-rates";
+import { useCurrency } from "@/store/store-context";
 
 interface SettingsProps {
   locale: string;
+  rates: ExchangeRates;
 }
 
 const Settings = (props: SettingsProps) => {
-  const { locale } = props;
+  const { locale, rates } = props;
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
   const buttonRef = useRef(null);
+  const { setExchangeRates } = useCurrency();
 
   useEffect(() => {
     // Close the dropdown if clicked outside
@@ -39,6 +43,13 @@ const Settings = (props: SettingsProps) => {
     };
   }, []);
 
+  useEffect(() => {
+    if (rates) {
+      setExchangeRates(rates);
+      localStorage.setItem("rates", JSON.stringify(rates));
+    }
+  }, [rates]);
+
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
   };
@@ -52,7 +63,7 @@ const Settings = (props: SettingsProps) => {
         onClick={toggleDropdown}
       >
         {/* ⚙️ Icon for settings */}
-        <span className="text-3xl">⚙︎</span>
+        <span className="text-4xl">⚙︎</span>
       </button>
       {/* Dropdown Menu */}
       {dropdownOpen && (

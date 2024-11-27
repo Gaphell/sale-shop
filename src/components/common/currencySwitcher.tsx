@@ -1,17 +1,27 @@
 "use client";
 
-import { useState } from "react";
+import { ExchangeRateKey } from "@/actions/exchange-rates";
+import { useCurrency } from "@/store/store-context";
+import { currencyMapping } from "@/utils/utils";
 
 const CurrencySwitcher = () => {
-  const [selectedCurrency, setCurrency] = useState("USD");
   const currencies = ["USD", "EUR", "GBP", "INR"];
+  const { currency, setSelectedCurrency } = useCurrency();
+
+  // Update localStorage whenever currency changes
+  const handleCurrencyChange = (value: ExchangeRateKey) => {
+    setSelectedCurrency(value);
+    localStorage.setItem("currency", value);
+  };
 
   return (
     <div className="relative flex gap-2 items-center w-full max-w-xs">
-      <span>$</span>
+      <span>{currencyMapping[currency]?.symbol}</span>
       <select
-        value={selectedCurrency}
-        onChange={(e) => setCurrency(e.target.value)}
+        value={currency}
+        onChange={(e) =>
+          handleCurrencyChange(e.target.value as ExchangeRateKey)
+        }
         className="block w-full px-3 py-2 rounded-md shadow-sm appearance-none focus:ring-2 focus:ring-green-500 focus:border-green-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-200 text-sm sm:px-4 sm:py-2"
       >
         {currencies.map((currency) => (

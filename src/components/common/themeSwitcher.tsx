@@ -1,20 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCurrency } from "@/store/store-context";
 
 const ThemeSwitcher = () => {
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
-
-  useEffect(() => {
-    // Initialize theme from localStorage or default to 'light'
-    const storedTheme = localStorage.getItem("theme") || "light";
-    setTheme(storedTheme);
-    document.documentElement.classList.add(storedTheme);
-  }, []);
+  // const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+  const { theme, setSelectedTheme } = useCurrency();
 
   const toggleTheme = () => {
     const newTheme = theme === "light" ? "dark" : "light";
-    setTheme(newTheme);
+    setSelectedTheme(newTheme);
 
     // Update the HTML root class
     document.documentElement.classList.remove(theme);

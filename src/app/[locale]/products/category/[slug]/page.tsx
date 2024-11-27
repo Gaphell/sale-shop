@@ -11,9 +11,7 @@ interface ProductCategoryProps {
 export default async function ProductCategory(props: ProductCategoryProps) {
   const { locale, slug } = await props.params;
 
-  const data = await fetchProductsWithCategory(slug);
+  const data = await fetchProductsWithCategory({ slug });
 
-  return (
-    <ProductListPage locale={locale} products={data.products} slug={slug} />
-  );
+  return <ProductListPage locale={locale} data={data} slug={slug} />;
 }

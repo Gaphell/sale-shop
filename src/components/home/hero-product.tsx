@@ -1,16 +1,22 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl"; // declare this import
 
+function getRandomNumber(min: number, max: number) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 const HeroProduct = () => {
   const t = useTranslations("Home"); // declare the hook passing into parameter a context name
-
   return (
     <>
       <section className="relative text-gray-900 dark:text-gray-100 p-10 h-96 rounded-lg shadow-md text-center">
         {/* Optimized Next.js Image */}
         <div className="absolute inset-0">
           <Image
-            src="https://picsum.photos/1200/400"
+            src={`https://picsum.photos/1200/400?random=${getRandomNumber(
+              1,
+              100
+            )}`}
             alt="Hero Background"
             width={1200}
             height={400}

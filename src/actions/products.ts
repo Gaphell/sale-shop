@@ -1,9 +1,19 @@
 "use server";
 
-export const fetchProducts = async () => {
+interface FetchProductsParams {
+  limit?: number;
+  skip?: number;
+}
+
+export const fetchProducts = async ({
+  limit = 10,
+  skip = 0,
+}: FetchProductsParams) => {
   let response;
   try {
-    response = await fetch(`https://dummyjson.com/products`);
+    const url = `https://dummyjson.com/products?limit=${limit}&skip=${skip}`;
+
+    response = await fetch(url);
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
