@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import CurrencySwitcher from "./currencySwitcher";
-import LanguageSwitcher from "./languageSwitcher";
-import ThemeSwitcher from "./themeSwitcher";
+import CurrencySwitcher from "./currency-switcher";
+import LanguageSwitcher from "./language-switcher";
+import ThemeSwitcher from "./theme-switcher";
 import { ExchangeRates } from "@/actions/exchange-rates";
 import { useCurrency } from "@/store/store-context";
 

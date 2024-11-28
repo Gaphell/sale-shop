@@ -19,13 +19,8 @@ function replaceImageUrl(categories: Array<Category>) {
 }
 
 export const fetchProductCategory = async () => {
-  let response;
   try {
-    response = await fetch("https://dummyjson.com/products/categories");
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
+    const response = await fetch("https://dummyjson.com/products/categories");
     const data = await response.json(); // Parse JSON response
     return replaceImageUrl(data);
   } catch (e) {

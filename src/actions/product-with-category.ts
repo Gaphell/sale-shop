@@ -11,15 +11,10 @@ export const fetchProductsWithCategory = async ({
   limit = 10,
   skip = 0,
 }: fetchProductsWithCategoryParams) => {
-  let response;
   try {
-    response = await fetch(
+    const response = await fetch(
       `https://dummyjson.com/products/category/${slug}?limit=${limit}&skip=${skip}`
     );
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
     const data = await response.json(); // Parse JSON response
     return data;
   } catch (e) {

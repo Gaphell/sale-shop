@@ -5,41 +5,39 @@ import Link from "next/link";
 import { useState } from "react";
 import PriceConverter from "../ui/price-converter";
 import { fetchProducts } from "@/actions";
+import { Product } from "@/actions/product";
+import SortingDropdown from "../common/sorting-dropdown";
 
 interface ProductListPageProps {
   locale: string;
   slug?: string;
-  data: any;
+  data: { products: Array<Product> };
 }
 
 export default function ProductListPage(props: ProductListPageProps) {
   const { locale, data, slug } = props;
   const { products } = data;
   const [search, setSearch] = useState("");
-  const [sortBy, setSortBy] = useState("name-asc"); // Default sort by name ascending
-  const [loadedProducts, setLoadedProducts] = useState(products); // Start with initial products
-  const [skip, setSkip] = useState(10); // Default skip value for the first load
-  const [loading, setLoading] = useState(false); // To prevent multiple loads at once
+  const [sortBy, setSortBy] = useState("name-asc");
+  const [loadedProducts, setLoadedProducts] = useState(products);
+  const [skip, setSkip] = useState(10);
+  const [loading, setLoading] = useState(false);
 
   const handleLoadMore = async () => {
     setLoading(true);
     try {
-      // Fetch the next set of products using pagination
       const newProducts = await fetchProducts({ limit: 10, skip });
-
-      // Check if new products are returned
       if (newProducts) {
-        setLoadedProducts((prev) => [...prev, ...newProducts.products]); // Append new products to existing ones
-        setSkip((prev) => prev + 10); // Update skip to load the next batch
+        setLoadedProducts((prev) => [...prev, ...newProducts.products]);
+        setSkip((prev) => prev + 10);
       }
     } catch (error) {
       console.error("Error loading more products:", error);
     } finally {
-      setLoading(false); // Reset loading state
+      setLoading(false);
     }
   };
 
-  // Filter products based on search
   const filteredProducts = loadedProducts
     ?.filter((p) => p.title.toLowerCase().includes(search.toLowerCase()))
     .sort((a, b) => {
@@ -59,58 +57,19 @@ export default function ProductListPage(props: ProductListPageProps) {
 
   return (
     <div>
-      <div className="flex flex-col md:flex-row gap-6 mb-8">
+      <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start sm:items-center mb-8">
+        {/* Search Input */}
         <input
           type="text"
           placeholder="Search Products"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="border p-3 rounded-md w-full md:w-1/3 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 placeholder-gray-400 dark:placeholder-gray-500 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="px-4 py-2 rounded-md w-full sm:w-[300px] bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 placeholder-gray-400 dark:placeholder-gray-500 shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-900"
         />
-        <div className="space-x-4">
-          <label className="inline-flex items-center text-gray-800 dark:text-gray-200">
-            <input
-              type="radio"
-              value="name-asc"
-              checked={sortBy === "name-asc"}
-              onChange={(e) => setSortBy(e.target.value)}
-              className="form-radio text-blue-500 focus:ring-2 focus:ring-blue-500"
-            />
-            <span className="ml-2">Sort by Name (ASC)</span>
-          </label>
 
-          <label className="inline-flex items-center text-gray-800 dark:text-gray-200">
-            <input
-              type="radio"
-              value="name-dsc"
-              checked={sortBy === "name-dsc"}
-              onChange={(e) => setSortBy(e.target.value)}
-              className="form-radio text-blue-500 focus:ring-2 focus:ring-blue-500"
-            />
-            <span className="ml-2">Sort by Name (DSC)</span>
-          </label>
-
-          <label className="inline-flex items-center text-gray-800 dark:text-gray-200">
-            <input
-              type="radio"
-              value="price-asc"
-              checked={sortBy === "price-asc"}
-              onChange={(e) => setSortBy(e.target.value)}
-              className="form-radio text-blue-500 focus:ring-2 focus:ring-blue-500"
-            />
-            <span className="ml-2">Sort by Price (ASC)</span>
-          </label>
-
-          <label className="inline-flex items-center text-gray-800 dark:text-gray-200">
-            <input
-              type="radio"
-              value="price-dsc"
-              checked={sortBy === "price-dsc"}
-              onChange={(e) => setSortBy(e.target.value)}
-              className="form-radio text-blue-500 focus:ring-2 focus:ring-blue-500"
-            />
-            <span className="ml-2">Sort by Price (DSC)</span>
-          </label>
+        {/* Filter Dropdown */}
+        <div className="w-full sm:w-auto">
+          <SortingDropdown sortBy={sortBy} setSortBy={setSortBy} />
         </div>
       </div>
 
@@ -118,7 +77,7 @@ export default function ProductListPage(props: ProductListPageProps) {
         {filteredProducts?.map((product) => (
           <div
             key={product.id}
-            className="group hover:outline hover:outline-2 hover:outline-gray-900 dark:hover:outline-gray-50 duration-500 relative flex flex-col items-center p-6 bg-white dark:bg-gray-900 rounded-lg shadow-md hover:shadow-xl transition-transform transform hover:-translate-y-1"
+            className="group hover:outline hover:outline-2 hover:outline-gray-900 dark:hover:outline-gray-50 duration-500 relative flex flex-col items-center p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-2xl hover:shadow-xl transition-transform transform hover:-translate-y-1"
           >
             <Link
               href={
@@ -148,12 +107,10 @@ export default function ProductListPage(props: ProductListPageProps) {
       <div className="flex justify-center mt-8">
         <button
           onClick={handleLoadMore}
-          disabled={loading} // Disable the button if still loading
+          disabled={loading}
           className="bg-blue-600 text-white px-6 py-3 rounded-md shadow-lg hover:bg-blue-700 transition duration-300 md:px-8 md:py-4"
         >
-          {/* <Link href={`${pathname}?skip=${data.skip + 10}`}> */}
           {loading ? "Loading..." : "Load More"}
-          {/* </Link> */}
         </button>
       </div>
     </div>

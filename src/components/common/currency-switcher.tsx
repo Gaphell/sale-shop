@@ -22,7 +22,7 @@ const CurrencySwitcher = () => {
         onChange={(e) =>
           handleCurrencyChange(e.target.value as ExchangeRateKey)
         }
-        className="block w-full px-3 py-2 rounded-md shadow-sm appearance-none focus:ring-2 focus:ring-green-500 focus:border-green-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-200 text-sm sm:px-4 sm:py-2"
+        className="block w-full px-3 py-2 rounded-md shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-gray-900 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-200 text-sm sm:px-4 sm:py-2"
       >
         {currencies.map((currency) => (
           <option key={currency} value={currency}>

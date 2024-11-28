@@ -47,13 +47,8 @@ export interface Product {
 }
 
 export const fetchProduct = async (id: string) => {
-  let response;
   try {
-    response = await fetch(`https://dummyjson.com/products/${id}`);
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
+    const response = await fetch(`https://dummyjson.com/products/${id}`);
     const data = await response.json(); // Parse JSON response
     return data;
   } catch (e) {

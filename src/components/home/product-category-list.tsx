@@ -25,7 +25,7 @@ const ProductCategoryList = (props: ProductCategoryListProps) => {
             <Link
               href={`/${locale}/products/category/${category.slug}`}
               key={category.slug}
-              className="group hover:outline hover:outline-2 hover:outline-gray-900 dark:hover:outline-gray-50 duration-500 relative flex flex-col items-center p-6 bg-white dark:bg-gray-900 rounded-lg shadow-md hover:shadow-xl transition-transform transform hover:-translate-y-1"
+              className="group hover:outline hover:outline-2 hover:outline-gray-900 dark:hover:outline-gray-50 duration-500 relative flex flex-col items-center p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-2xl hover:shadow-xl transition-transform transform hover:-translate-y-1"
             >
               <Image
                 width={300}

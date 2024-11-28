@@ -86,7 +86,7 @@ const Carousel = (props: CarouselProps) => {
           {items.map(({ id, thumbnail, title }) => (
             <div
               key={id}
-              className="flex-shrink-0 group hover:outline hover:outline-2 hover:outline-gray-900 dark:hover:outline-gray-50 duration-500 rounded-lg shadow-md hover:shadow-xl transition-transform transform hover:scale-105"
+              className="bg-white dark:bg-gray-800 flex-shrink-0 group hover:outline hover:outline-2 hover:outline-gray-900 dark:hover:outline-gray-50 duration-500 rounded-lg shadow-md hover:shadow-2xl transition-transform transform hover:scale-105"
             >
               <Link
                 href={
