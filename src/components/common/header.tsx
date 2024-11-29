@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Settings from "./settings";
 import { fetchExchangeRages } from "@/actions";
+import { setRequestLocale } from "next-intl/server";
 
 interface HeaderProps {
   locale: string;
@@ -9,6 +10,9 @@ interface HeaderProps {
 
 const Header = async ({ locale }: HeaderProps) => {
   const data = await fetchExchangeRages();
+
+  setRequestLocale(locale);
+
   return (
     <header className="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100 relative sticky top-0 z-50 shadow-sm">
       <div className="px-4 sm:px-6 lg:px-16 mx-auto flex items-center justify-between">

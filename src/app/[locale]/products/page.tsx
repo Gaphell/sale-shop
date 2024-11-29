@@ -3,7 +3,7 @@ import ProductListPage from "@/components/products/product-list";
 import { Metadata, ResolvingMetadata } from "next";
 
 interface ProductsPageProps {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
 export async function generateMetadata(
@@ -12,7 +12,7 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   // read route params
 
-  const { locale } = props.params;
+  const { locale } = await props.params;
   const pageTitle = "Products | Sale Shop";
 
   const pageDescription =

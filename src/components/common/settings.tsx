@@ -16,8 +16,8 @@ const Settings = (props: SettingsProps) => {
   const { locale, rates } = props;
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const dropdownRef = useRef(null);
-  const buttonRef = useRef(null);
+  const dropdownRef = useRef<HTMLDivElement | null>(null);
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
   const { setExchangeRates } = useCurrency();
 
   useEffect(() => {
@@ -26,9 +26,9 @@ const Settings = (props: SettingsProps) => {
       // Check if the click is outside both the dropdown and the button (gear icon)
       if (
         dropdownRef.current &&
-        !dropdownRef.current.contains(event.target) &&
+        !dropdownRef.current.contains(event.target as Node) &&
         buttonRef.current &&
-        !buttonRef.current.contains(event.target)
+        !buttonRef.current.contains(event.target as Node)
       ) {
         setDropdownOpen(false);
       }
@@ -48,7 +48,7 @@ const Settings = (props: SettingsProps) => {
       setExchangeRates(rates);
       localStorage.setItem("rates", JSON.stringify(rates));
     }
-  }, [rates]);
+  }, [rates, setExchangeRates]);
 
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);

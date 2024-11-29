@@ -3,17 +3,17 @@ import ProductListPage from "@/components/products/product-list";
 import { Metadata, ResolvingMetadata } from "next";
 
 interface ProductCategoryProps {
-  params: {
+  params: Promise<{
     locale: string;
     slug: string;
-  };
+  }>;
 }
 
 export async function generateMetadata(
   props: ProductCategoryProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const { slug, locale } = props.params;
+  const { slug, locale } = await props.params;
   const pageTitle = `Products in ${slug} | Sale Shop`;
 
   const pageDescription = `Browse a wide selection of products in the category "${slug}". Find great deals and shop now!`;

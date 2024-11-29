@@ -1,9 +1,9 @@
 "use server";
 
 export interface Category {
-  name: string; // The name of the category
-  slug: string; // The slugified version of the category name
-  url: string; // The URL pointing to the category's page
+  name: string;
+  slug: string;
+  url: string;
   image: string;
 }
 
@@ -21,10 +21,10 @@ function replaceImageUrl(categories: Array<Category>) {
 export const fetchProductCategory = async () => {
   try {
     const response = await fetch("https://dummyjson.com/products/categories");
-    const data = await response.json(); // Parse JSON response
+    const data = await response.json();
     return replaceImageUrl(data);
   } catch (e) {
     console.error("Error fetching products:", e);
-    return null; // Return null or an appropriate fallback value
+    return null;
   }
 };

@@ -3,7 +3,7 @@
 interface ProductReview {
   rating: number;
   comment: string;
-  date: string; // ISO format date string
+  date: string;
   reviewerName: string;
   reviewerEmail: string;
 }
@@ -15,10 +15,10 @@ interface ProductDimensions {
 }
 
 interface ProductMeta {
-  createdAt: string; // ISO format date string
-  updatedAt: string; // ISO format date string
+  createdAt: string;
+  updatedAt: string;
   barcode: string;
-  qrCode: string; // URL for QR code
+  qrCode: string;
 }
 
 export interface Product {
@@ -42,17 +42,17 @@ export interface Product {
   returnPolicy: string;
   minimumOrderQuantity: number;
   meta: ProductMeta;
-  images: string[]; // Array of image URLs
-  thumbnail: string; // URL for thumbnail image
+  images: string[];
+  thumbnail: string;
 }
 
 export const fetchProduct = async (id: string) => {
   try {
     const response = await fetch(`https://dummyjson.com/products/${id}`);
-    const data = await response.json(); // Parse JSON response
+    const data = await response.json();
     return data;
   } catch (e) {
-    console.error("Error fetching products:", e);
-    return null; // Return null or an appropriate fallback value
+    console.error("Error fetching product:", e);
+    return null;
   }
 };

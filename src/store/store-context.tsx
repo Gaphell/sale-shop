@@ -15,13 +15,13 @@ export interface StoreContextValue {
 }
 
 const StoreContext = createContext<StoreContextValue>({
-  setSelectedCurrency: (currency: ExchangeRateKey) => {},
-  setExchangeRates: (rates: ExchangeRates) => {},
-  setSelectedTheme: (theme: string) => {},
+  setSelectedCurrency: () => undefined,
+  setExchangeRates: () => undefined,
+  setSelectedTheme: () => undefined,
   theme: "light",
   currency: "USD",
   rates: { USD: 1 },
-  convertPrice: (amount: number) => "",
+  convertPrice: () => "",
 });
 
 interface StoreProviderProps {

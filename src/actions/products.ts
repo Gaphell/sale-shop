@@ -12,10 +12,10 @@ export const fetchProducts = async ({
   try {
     const url = `https://dummyjson.com/products?limit=${limit}&skip=${skip}`;
     const response = await fetch(url);
-    const data = await response.json(); // Parse JSON response
+    const data = await response.json();
     return data;
   } catch (e) {
     console.error("Error fetching products:", e);
-    return null; // Return null or an appropriate fallback value
+    return null;
   }
 };

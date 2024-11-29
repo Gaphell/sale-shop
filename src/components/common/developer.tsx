@@ -1,12 +1,11 @@
 import React from "react";
 
-const Developer = (props) => {
+const Developer = () => {
   return (
     <div className="absolute object-cover w-60 h-60">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 500 500"
-        {...props}
         className="animate-breathing"
       >
         <g id="freepik--Character--inject-22">

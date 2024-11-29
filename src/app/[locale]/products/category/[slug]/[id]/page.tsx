@@ -3,18 +3,18 @@ import ProductDetailsPage from "../../../[id]/page";
 import { fetchProduct } from "@/actions";
 
 interface ProductDetailsWithCategoryPageProps {
-  params: {
+  params: Promise<{
     locale: string;
     slug: string;
     id: string;
-  };
+  }>;
 }
 
 export async function generateMetadata(
   props: ProductDetailsWithCategoryPageProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const { locale, id, slug } = props.params;
+  const { locale, id, slug } = await props.params;
 
   const product = await fetchProduct(id);
 
@@ -42,7 +42,5 @@ export async function generateMetadata(
 export default async function ProductDetailsWithCategoryPage(
   props: ProductDetailsWithCategoryPageProps
 ) {
-  const { locale, slug, id } = await props.params;
-
-  return <ProductDetailsPage params={{ locale, slug, id }} />;
+  return <ProductDetailsPage params={props.params} />;
 }

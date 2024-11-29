@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import React from "react";
 
 interface HomeProps {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
 export const metadata: Metadata = {

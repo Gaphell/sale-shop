@@ -7,7 +7,7 @@ export const fetchExchangeRages = async () => {
     return data;
   } catch (err) {
     console.error("Error fetching products:", err);
-    return null; // Return null or an appropriate fallback value
+    return null; 
   }
 };
 

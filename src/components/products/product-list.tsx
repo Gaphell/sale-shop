@@ -97,7 +97,7 @@ export default function ProductListPage({
                     height={800}
                     src={product.thumbnail}
                     alt={product.title}
-                    loading="lazy"
+                    priority
                     className="w-full h-40 object-cover rounded-md"
                   />
                   <h2 className="mt-4 font-bold text-lg text-gray-800 dark:text-gray-200 mb-2">

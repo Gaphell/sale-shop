@@ -9,18 +9,18 @@ import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 
 interface ProductDetailsPageProps {
-  params: {
+  params: Promise<{
     id: string;
     locale: string;
     slug: string;
-  };
+  }>;
 }
 
 export async function generateMetadata(
   props: ProductDetailsPageProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const { locale, id } = props.params;
+  const { locale, id } = await props.params;
 
   const product = await fetchProduct(id);
 
