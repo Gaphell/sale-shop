@@ -23,27 +23,24 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Sale-Shop - Your Ultimate E-Commerce Destination",
-  description:
-    "Sale-Shop is a modern online shopping platform offering the best deals on products. Discover a wide range of items from top categories with secure payment options and fast delivery.",
   keywords:
     "e-commerce, discount, online shopping, best deals, sale, shopping platform, secure payment, fast delivery",
   authors: [{ name: "Sale-Shop Team" }],
+  applicationName: "Sale Shop",
   openGraph: {
     title: "Sale-Shop - Your Ultimate E-Commerce Destination",
     description:
       "Shop the best deals at Sale-Shop, your go-to destination for online shopping. Explore a variety of products with fast shipping and secure payment.",
-    url: "https://www.sale-shop.com", // Change to your website URL
+    url: `${process.env.NEXT_PUBLIC_SITE_URL}`,
     type: "website",
-    images: "https://picsum.photos/1200/400", // Change to your image URL for the Open Graph
+    images: "https://picsum.photos/1200/400",
   },
   twitter: {
-    card: "summary_large_image", // Twitter card type
-    site: "@sale_shop", // Your Twitter handle
+    card: "summary_large_image",
     title: "Sale-Shop - Your Ultimate E-Commerce Destination",
     description:
       "Shop at Sale-Shop for the best deals on a wide range of products. Experience secure payments and fast delivery.",
-    images: "https://picsum.photos/1200/400", // Change to your image URL for Twitter
+    images: "https://picsum.photos/1200/400",
   },
 };
 

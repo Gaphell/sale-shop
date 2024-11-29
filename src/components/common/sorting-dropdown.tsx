@@ -7,6 +7,7 @@ interface SortingDropdownProps {
 
 const SortingDropdown = ({ sortBy, setSortBy }: SortingDropdownProps) => {
   const sortingOptions = [
+    { value: "", label: "-" },
     { value: "name-asc", label: "Name (A-Z)" },
     { value: "name-dsc", label: "Name (Z-A)" },
     { value: "price-asc", label: "Price (Low to High)" },
@@ -21,10 +22,7 @@ const SortingDropdown = ({ sortBy, setSortBy }: SortingDropdownProps) => {
         className="block w-full px-4 py-2 rounded-md shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-gray-900 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-50 text-sm"
       >
         {sortingOptions.map((option) => (
-          <option
-            key={option.value}
-            value={option.value}
-          >
+          <option key={option.value} value={option.value}>
             {option.label}
           </option>
         ))}

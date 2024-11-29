@@ -1,10 +1,14 @@
 {
   "Home": {
     "title": "Hallo, willkommen auf unserer Seite!",
-    "description": "Tutorial of how to manipulate i18n based on route path or domain with  Nextjs v15",
+    "description": "Tutorial, wie man i18n basierend auf dem Routenpfad oder der Domain mit Next.js v15 manipuliert",
     "meta": {
-      "title": "title",
-      "description": "description"
-    }
+      "title": "Willkommen im Sale-Shop",
+      "description": "Entdecke erstaunliche Produkte, die speziell für dich kuratiert wurden."
+    },
+    "appName": "Sale-Shop",
+    "welcomeMessage": "Willkommen im Sale-Shop",
+    "heroText": "Entdecke erstaunliche Produkte, die speziell für dich kuratiert wurden.",
+    "categories": "Kategorien"
   }
 }

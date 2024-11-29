@@ -5,7 +5,7 @@ import { convertCurrency } from "@/utils/utils";
 import { createContext, useContext, useState, useEffect } from "react";
 
 export interface StoreContextValue {
-  currency: keyof ExchangeRates;
+  currency: ExchangeRateKey;
   theme: string;
   rates: Partial<ExchangeRates>;
   setSelectedCurrency: (currency: ExchangeRateKey) => void;

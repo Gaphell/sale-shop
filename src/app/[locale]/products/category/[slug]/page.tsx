@@ -1,10 +1,35 @@
 import { fetchProductsWithCategory } from "@/actions";
 import ProductListPage from "@/components/products/product-list";
+import { Metadata, ResolvingMetadata } from "next";
 
 interface ProductCategoryProps {
   params: {
     locale: string;
     slug: string;
+  };
+}
+
+export async function generateMetadata(
+  props: ProductCategoryProps,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const { slug, locale } = props.params;
+  const pageTitle = `Products in ${slug} | Sale Shop`;
+
+  const pageDescription = `Browse a wide selection of products in the category "${slug}". Find great deals and shop now!`;
+
+  const pageUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/${locale}/products/category/${slug}`;
+
+  // optionally access and extend (rather than replace) parent metadata
+  const previousImages = (await parent).openGraph?.images || [];
+
+  return {
+    title: pageTitle,
+    description: pageDescription,
+    openGraph: {
+      images: ["https://picsum.photos/1200/400", ...previousImages],
+      url: pageUrl,
+    },
   };
 }
 

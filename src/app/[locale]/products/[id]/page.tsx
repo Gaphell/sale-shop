@@ -5,6 +5,7 @@ import {
 } from "@/actions";
 import Carousel from "@/components/ui/carousel";
 import PriceConverter from "@/components/ui/price-converter";
+import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 
 interface ProductDetailsPageProps {
@@ -15,28 +16,60 @@ interface ProductDetailsPageProps {
   };
 }
 
-export default async function ProductDetailsPage(
-  props: ProductDetailsPageProps
-) {
-  const { id, locale, slug } = await props.params;
+export async function generateMetadata(
+  props: ProductDetailsPageProps,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const { locale, id } = props.params;
 
   const product = await fetchProduct(id);
 
-  const data = slug
-    ? await fetchProductsWithCategory({ slug })
-    : await fetchProducts({});
+  const pageTitle = `${product.title} - Sale Shop`;
+
+  const pageDescription = product.description || "Best product for your needs!";
+
+  const pageUrl = `/${locale}/products/${id}`;
+
+  const productImage =
+    product.thumbnail ?? "https://picsum.photos/200/200?random=1";
+
+  const previousImages = (await parent).openGraph?.images || [];
+
+  return {
+    title: pageTitle,
+    description: pageDescription,
+    openGraph: {
+      images: [productImage, ...previousImages],
+      url: pageUrl,
+    },
+  };
+}
+
+export default async function ProductDetailsPage({
+  params,
+}: ProductDetailsPageProps) {
+  const { id, locale, slug } = await params;
+
+  const [product, data] = await Promise.all([
+    fetchProduct(id),
+    slug ? fetchProductsWithCategory({ slug }) : fetchProducts({}),
+  ]);
+
+  const productImage =
+    product.thumbnail ?? "https://picsum.photos/200/200?random=1"; // Fallback logic in one line
 
   return (
     <>
       <div className="flex flex-col gap-6 md:flex-row items-center md:items-stretch bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100 rounded-lg p-4 md:p-6">
         {/* Hero Image */}
-        <div className="flex-1 w-full bg-white dark:bg-gray-800 rounded-lg">
+        <div className="flex justify-center flex-1 w-full bg-white dark:bg-gray-800 rounded-lg">
           <Image
             width={800}
             height={400}
-            src={product.thumbnail}
+            src={product.thumbnail ?? productImage} // Default to fallback image if no thumbnail
             alt={`Product ${id} Hero Image`}
             className="w-full h-auto aspect-[6/3] object-contain rounded-lg"
+            priority
           />
         </div>
 
