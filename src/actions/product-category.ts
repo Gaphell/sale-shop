@@ -18,13 +18,35 @@ function replaceImageUrl(categories: Array<Category>) {
   }));
 }
 
-export const fetchProductCategory = async () => {
+export const fetchProductCategory = async (): Promise<
+  Array<Category> | { error: string }
+> => {
   try {
     const response = await fetch("https://dummyjson.com/products/categories");
+
+    // Check if the HTTP status is okay
+    if (!response.ok) {
+      throw new Error(
+        `HTTP error! Status: ${response.status} - ${response.statusText}`
+      );
+    }
+
     const data = await response.json();
     return replaceImageUrl(data);
-  } catch (e) {
-    console.error("Error fetching products:", e);
-    return null;
+  } catch (e: unknown) {
+    // Log detailed error information
+    if (e instanceof Error) {
+      console.error("Error fetching product category:", e.message);
+    } else {
+      console.error(
+        "Unknown error occurred while fetching product category:",
+        e
+      );
+    }
+
+    // Optionally rethrow the error or return a default value
+    return {
+      error: "Failed to fetch product category. Please try again later.",
+    };
   }
 };

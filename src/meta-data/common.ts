@@ -7,7 +7,7 @@ export const metadataConfig = {
     title: "Sale-Shop - Your Ultimate E-Commerce Destination",
     description:
       "Shop the best deals at Sale-Shop, your go-to destination for online shopping. Explore a variety of products with fast shipping and secure payment.",
-    url: process.env.NEXT_PUBLIC_SITE_URL || "https://default-site.com",
+    url: process.env.baseUrl || "https://default-site.com",
     type: "website",
     images: "https://picsum.photos/1200/400",
   },

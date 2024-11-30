@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description:
     "Learn more about Sale Shop, your trusted e-commerce platform for the best deals on tech gadgets, home essentials, fashion, and more.",
   openGraph: {
-    url: `${process.env.NEXT_PUBLIC_SITE_URL}/about-us`,
+    url: `${process.env.baseUrl}/about-us`,
   },
 };
 

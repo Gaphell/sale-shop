@@ -12,13 +12,12 @@ export const metadata: Metadata = {
   description:
     "Shop the best deals and offers across various categories. Fast delivery and quality products.",
   openGraph: {
-    url: `${process.env.NEXT_PUBLIC_SITE_URL}`,
+    url: `${process.env.baseUrl}`,
   },
 };
 
 export default async function Home(props: HomeProps) {
   const { locale } = await props.params;
-
   return (
     <div>
       <HeroProduct />

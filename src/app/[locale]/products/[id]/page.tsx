@@ -7,6 +7,7 @@ import Carousel from "@/components/ui/carousel";
 import PriceConverter from "@/components/ui/price-converter";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 
 interface ProductDetailsPageProps {
   params: Promise<{
@@ -57,6 +58,10 @@ export default async function ProductDetailsPage({
 
   const productImage =
     product.thumbnail ?? "https://picsum.photos/200/200?random=1"; // Fallback logic in one line
+
+  if (product?.error || data?.errror) {
+    notFound();
+  }
 
   return (
     <>
