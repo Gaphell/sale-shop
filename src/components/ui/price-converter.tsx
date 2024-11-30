@@ -12,7 +12,7 @@ const PriceConverter = ({ price }: PriceConverterProps) => {
 
   const convertedPrice = useMemo(
     () => convertPrice(price),
-    [price, convertPrice]
+    [price, convertPrice],
   );
 
   return <span>{convertedPrice}</span>;

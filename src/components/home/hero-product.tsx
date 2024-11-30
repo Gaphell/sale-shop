@@ -7,7 +7,7 @@ const HeroProduct = () => {
 
   const randomImageUrl = `https://picsum.photos/1200/400?random=${getRandomNumber(
     1,
-    100
+    100,
   )}`;
 
   return (

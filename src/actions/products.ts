@@ -16,7 +16,7 @@ export const fetchProducts = async ({
     // Check if the HTTP status is okay
     if (!response.ok) {
       throw new Error(
-        `HTTP error! Status: ${response.status} - ${response.statusText}`
+        `HTTP error! Status: ${response.status} - ${response.statusText}`,
       );
     }
 

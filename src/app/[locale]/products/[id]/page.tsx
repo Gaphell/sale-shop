@@ -19,7 +19,7 @@ interface ProductDetailsPageProps {
 
 export async function generateMetadata(
   props: ProductDetailsPageProps,
-  parent: ResolvingMetadata
+  parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const { locale, id } = await props.params;
 

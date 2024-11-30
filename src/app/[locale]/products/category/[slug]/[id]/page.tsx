@@ -12,7 +12,7 @@ interface ProductDetailsWithCategoryPageProps {
 
 export async function generateMetadata(
   props: ProductDetailsWithCategoryPageProps,
-  parent: ResolvingMetadata
+  parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const { locale, id, slug } = await props.params;
 
@@ -40,7 +40,7 @@ export async function generateMetadata(
 }
 
 export default async function ProductDetailsWithCategoryPage(
-  props: ProductDetailsWithCategoryPageProps
+  props: ProductDetailsWithCategoryPageProps,
 ) {
   return <ProductDetailsPage params={props.params} />;
 }

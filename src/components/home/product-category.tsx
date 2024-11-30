@@ -9,7 +9,7 @@ interface ProductCategoryProps {
 
 // Type guard to check if the response is an error object
 function isErrorResponse(
-  response: Array<Category> | { error: string }
+  response: Array<Category> | { error: string },
 ): response is { error: string } {
   return (response as { error: string }).error !== undefined;
 }

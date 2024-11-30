@@ -13,13 +13,13 @@ export const fetchProductsWithCategory = async ({
 }: fetchProductsWithCategoryParams) => {
   try {
     const response = await fetch(
-      `https://dummyjson.com/products/category/${slug}?limit=${limit}&skip=${skip}`
+      `https://dummyjson.com/products/category/${slug}?limit=${limit}&skip=${skip}`,
     );
 
     // Check if the HTTP status is okay
     if (!response.ok) {
       throw new Error(
-        `HTTP error! Status: ${response.status} - ${response.statusText}`
+        `HTTP error! Status: ${response.status} - ${response.statusText}`,
       );
     }
 
@@ -32,7 +32,7 @@ export const fetchProductsWithCategory = async ({
     } else {
       console.error(
         "Unknown error occurred while fetching products with category:",
-        e
+        e,
       );
     }
 

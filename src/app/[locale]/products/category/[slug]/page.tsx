@@ -12,7 +12,7 @@ interface ProductCategoryProps {
 
 export async function generateMetadata(
   props: ProductCategoryProps,
-  parent: ResolvingMetadata
+  parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const { slug, locale } = await props.params;
   const pageTitle = `Products in ${slug} | Sale Shop`;

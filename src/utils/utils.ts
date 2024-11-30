@@ -11,7 +11,7 @@ export const currencyMapping: Record<string, { name: string; symbol: string }> =
 export const convertCurrency = (
   amount: number,
   currency: ExchangeRateKey,
-  rates: Partial<ExchangeRates>
+  rates: Partial<ExchangeRates>,
 ) => {
   const rate = (currency && rates && rates[currency]) || 1;
   return (

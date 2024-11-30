@@ -12,7 +12,7 @@ describe("Home Page", () => {
     cy.get('meta[name="description"]').should(
       "have.attr",
       "content",
-      "Shop the best deals and offers across various categories. Fast delivery and quality products."
+      "Shop the best deals and offers across various categories. Fast delivery and quality products.",
     );
   });
 

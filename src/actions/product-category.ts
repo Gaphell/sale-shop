@@ -27,7 +27,7 @@ export const fetchProductCategory = async (): Promise<
     // Check if the HTTP status is okay
     if (!response.ok) {
       throw new Error(
-        `HTTP error! Status: ${response.status} - ${response.statusText}`
+        `HTTP error! Status: ${response.status} - ${response.statusText}`,
       );
     }
 
@@ -40,7 +40,7 @@ export const fetchProductCategory = async (): Promise<
     } else {
       console.error(
         "Unknown error occurred while fetching product category:",
-        e
+        e,
       );
     }
 

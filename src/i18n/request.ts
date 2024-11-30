@@ -17,5 +17,5 @@ export default getRequestConfig(
       locale,
       messages: (await import(`../../messages/${locale}.json`)).default,
     };
-  }
+  },
 );

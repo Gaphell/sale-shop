@@ -9,7 +9,7 @@ interface ProductsPageProps {
 
 export async function generateMetadata(
   props: ProductsPageProps,
-  parent: ResolvingMetadata
+  parent: ResolvingMetadata,
 ): Promise<Metadata> {
   // read route params
 

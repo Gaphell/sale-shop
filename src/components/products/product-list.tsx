@@ -44,7 +44,7 @@ export default function ProductListPage({
   const filteredProducts = useMemo(() => {
     return loadedProducts
       ?.filter((product) =>
-        product.title.toLowerCase().includes(search.toLowerCase())
+        product.title.toLowerCase().includes(search.toLowerCase()),
       )
       .sort((a, b) => {
         switch (sortBy) {

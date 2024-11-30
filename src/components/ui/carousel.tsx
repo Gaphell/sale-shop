@@ -77,7 +77,7 @@ const Carousel = ({ items, locale, slug }: CarouselProps) => {
           </Link>
         </div>
       )),
-    [items, locale, slug]
+    [items, locale, slug],
   );
 
   return (
