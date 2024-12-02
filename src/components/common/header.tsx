@@ -25,16 +25,16 @@ const Header = async ({ locale }: HeaderProps) => {
             <Image
               src="/logo.svg"
               alt="Sale-Shop Logo"
-              width={86}
-              height={86}
+              width={64}
+              height={64}
               className="block dark:hidden w-16 sm:w-20 h-auto"
               priority
             />
             <Image
               src="/logo-dark.svg"
               alt="Sale-Shop Logo"
-              width={86}
-              height={86}
+              width={64}
+              height={64}
               className="hidden dark:block w-16 sm:w-20 h-auto"
               priority
             />

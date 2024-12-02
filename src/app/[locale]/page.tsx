@@ -1,7 +1,6 @@
 import HeroProduct from "@/components/home/hero-product";
 import ProductCategory from "@/components/home/product-category";
 import type { Metadata } from "next";
-import React from "react";
 
 interface HomeProps {
   params: Promise<{ locale: string }>;
@@ -18,6 +17,7 @@ export const metadata: Metadata = {
 
 export default async function Home(props: HomeProps) {
   const { locale } = await props.params;
+
   return (
     <div>
       <HeroProduct />

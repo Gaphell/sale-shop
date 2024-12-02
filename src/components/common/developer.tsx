@@ -1,5 +1,3 @@
-import React from "react";
-
 const Developer = () => {
   return (
     <div className="absolute object-cover w-60 h-60">

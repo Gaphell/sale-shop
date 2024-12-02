@@ -5,7 +5,16 @@ const withNextIntl = createNextIntlPlugin();
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ["picsum.photos", "cdn.dummyjson.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "picsum.photos",
+      },
+      {
+        protocol: "https",
+        hostname: "cdn.dummyjson.com",
+      },
+    ],
   },
   env: {
     baseUrl: "https://sale-shop.vercel.app",

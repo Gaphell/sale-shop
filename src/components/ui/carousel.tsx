@@ -6,7 +6,6 @@ import { useRef, useCallback, useMemo } from "react";
 import { Product } from "@/actions/product";
 import LeftArrow from "./left-arrow";
 import RightArrow from "./right-arrow";
-import React from "react";
 
 interface CarouselProps {
   items: Array<Product>;
